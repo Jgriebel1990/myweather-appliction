@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { getWeather } from "./service/weather";
-import CurrentWeather from './CurrentWeather'
+import DailyWeather from './DailyWeather'
 
 class App extends Component {
   constructor() {
@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       lat: 0,
       lon: 0,
-      currentWeather: {}
+      dailyWeather: [{}]
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
@@ -30,9 +30,16 @@ class App extends Component {
     console.log("hello");
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
-        const currentWeather = response.data.currently;
+        const dailyWeather = response.data.daily;
+        
+        const first = this.state.dailyWeather.slice(0, position);
+        const last = this.state.dailyWeather.silce(position + 1);
+        const newDaily = [
+          ...first,
+          ...last
+        ]
         this.setState({
-          currentWeather: currentWeather
+          dailyWeather: dailyWeather
         });
       })
       .catch(err => {
@@ -80,7 +87,7 @@ class App extends Component {
         </form>
         <pre>
           {JSON.stringify(this.state.currentWeather, null, 6)}
-          <CurrentWeather />
+          <DailyWeather />
         </pre>
       </div>
     );
