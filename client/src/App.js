@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import { getWeather } from "./service/weather";
+import { isEmptyObject } from './utilities';
+import DailyWeather from './DailyWeather'
 
 class App extends Component {
   constructor() {
@@ -8,7 +10,8 @@ class App extends Component {
     this.state = {
       lat: 0,
       lon: 0,
-      dailyWeather: [{}]
+      dailyWeather: {},
+      error: null
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
@@ -29,7 +32,7 @@ class App extends Component {
     console.log("hello");
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
-        const dailyWeather = response.data.daily.data;
+        const dailyWeather = response.data.daily;
         this.setState({
           dailyWeather: dailyWeather
         });
@@ -77,10 +80,11 @@ class App extends Component {
             Get Weather
           </button>
         </form>
-        <pre>
-          {JSON.stringify(this.state.currentWeather, null, 6)}
-          <DailyWeather />
-        </pre>
+        {this.state.error ? <h1>{this.state.error}</h1> : ''}
+        { isEmptyObject(this.state.dailyWeather) ? 
+          "" :
+          this.state.dailyWeather.data.map((day, index) => <DailyWeather key={index}
+                                                                        {...day} />)}
       </div>
     );
   }

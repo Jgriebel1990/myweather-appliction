@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DailyWeather = props => {
+
+
     return(
         <div className='col-md-3'>
             <ul>
@@ -14,6 +16,15 @@ const DailyWeather = props => {
             </ul>
         </div>
     )
+}
+
+DailyWeather.propTypes = {
+    time: PropTypes.number.isRequired,
+    summary: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    temperature: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    uvIndex: PropTypes.number.isRequired
 }
 
 export default DailyWeather;
