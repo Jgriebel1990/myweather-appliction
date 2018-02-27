@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DailyWeather = props => {
+const Friday = props => {
     return(
         <div className='col-md-3'>
-            <ul>
+           <ul>
                 <li>Time: {props.time}</li>
                 <li>Summary: {props.summary}</li>
                 <li>Icon: {props.icon}</li>
-                <li>Temperature {props.temperature}</li>
+                <li>Temperature: {props.temperature}</li>
                 <li>Humidity: {props.humidity}</li>
                 <li>uvIndex: {props.uvIndex}</li>
             </ul>
@@ -16,4 +16,4 @@ const DailyWeather = props => {
     )
 }
 
-export default DailyWeather;
+export default Friday;

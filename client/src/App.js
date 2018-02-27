@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import { getWeather } from "./service/weather";
-import DailyWeather from './DailyWeather'
 
 class App extends Component {
   constructor() {
@@ -30,14 +29,7 @@ class App extends Component {
     console.log("hello");
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
-        const dailyWeather = response.data.daily;
-        
-        const first = this.state.dailyWeather.slice(0, position);
-        const last = this.state.dailyWeather.silce(position + 1);
-        const newDaily = [
-          ...first,
-          ...last
-        ]
+        const dailyWeather = response.data.daily.data;
         this.setState({
           dailyWeather: dailyWeather
         });
