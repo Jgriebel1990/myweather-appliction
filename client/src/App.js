@@ -11,6 +11,8 @@ class App extends Component {
       lat: 0,
       lon: 0,
       dailyWeather: {},
+      city: '',
+      states: '',
       error: null
     };
     this.handleLatChange = this.handleLatChange.bind(this);
@@ -43,18 +45,21 @@ class App extends Component {
           msg: "error"
         });
       });
+    getCity(this.state.city, this.state.states)
+    
   }
   render() {
     return (
       <div>
-        <h1>Whats the Weather?</h1>
-        <header>
+        <h1 className='h1-style'>Whats the Weather?</h1>
+        <header className='head-style'>
           Enter the latitude and longitude to find the current weather!
         </header>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label>
+          <label className='lat'>
             <h4>Latitude</h4>
             <input
+              className='col-lg-3 lat'
               type="numbers"
               placeholder="Latitude"
               min="-90"
@@ -64,9 +69,10 @@ class App extends Component {
               required
             />
           </label>
-          <label>
+          <label className='lat'>
             <h4>Longitude</h4>
             <input
+              className='col-lg-3'
               type="numbers"
               placeholder="Longitude"
               min="-180"

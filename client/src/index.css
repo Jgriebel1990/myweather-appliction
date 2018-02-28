@@ -1,0 +1,21 @@
+.h1-style {
+    text-align: center;
+    color: steelblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100px;
+
+}
+.head-style {
+    text-align: center;
+    color: steelblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+}
+
+.lat {
+    text-align: center;
+}
+
+.form {
+    flex-wrap: wrap;
+}

@@ -2,15 +2,15 @@ const express = require("express");
 const axios = require("axios");
 
 require("dotenv").config();
-const { API_KEY } = process.env;
-
+const { DARKSKY_API } = process.env;
+const { MAPS_API} = process.env;
 
 const serverApp = express();
 const port = process.env.PORT || 5000;
 
 serverApp.get("/weather_forecast/:lat,:lon", function(request, response) {
-    const { lat, lon} = request.params;
-  const url = `https://api.darksky.net/forecast/${API_KEY}/${lat},${lon}`;
+  const { lat, lon } = request.params;
+  const url = `https://api.darksky.net/forecast/${DAKRSKY_API}/${lat},${lon}`;
   axios
     .get(url)
     .then(res => {
@@ -19,6 +19,22 @@ serverApp.get("/weather_forecast/:lat,:lon", function(request, response) {
     .catch(err => {
       response.status(500).json({
         msg: "you suck"
+      });
+    });
+});
+
+serverApp.get("/location/:city,:state", function(request, response) {
+  const { city, state } = request.params;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city},${state}&key=${MAPS_API}`;
+  axios
+    .get(url)
+    .then(res => {
+      response.status(200).json(res.data);
+    })
+    .catch(err => {
+      console.log("poop", err);
+      response.status(500).json({
+        msg: "fail"
       });
     });
 });
