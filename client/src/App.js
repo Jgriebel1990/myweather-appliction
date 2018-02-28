@@ -14,12 +14,13 @@ class App extends Component {
       dailyWeather: {},
       city: '',
       error: null,
-      state: 'FL'
+      state: ''
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleStateChange =this.handleStateChange.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -36,8 +37,16 @@ class App extends Component {
       city: e.target.value
     });
   }
+  handleStateChange(e) {
+    this.setState({
+      city: e.target.value
+    });
+  }
   handleSubmit(e) {
-    e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
+    
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
         const dailyWeather = response.data.daily;
@@ -63,10 +72,8 @@ class App extends Component {
           lon: lon,
         });
         this.handleSubmit();
-        
       })
       .catch(err => {
-        console.log('FAIL');
         this.setState({
           msg:'error'
         });
@@ -88,6 +95,7 @@ class App extends Component {
               className=""
               type="number"
               placeholder="Latitude"
+              step='0.000000001'
               min="-90"
               max="90"
               onChange={e => this.handleLatChange(e)}
@@ -101,6 +109,7 @@ class App extends Component {
               className=""
               type="number"
               placeholder="Longitude"
+              step='0.000000001'
               min="-180"
               max="180"
               onChange={e => this.handleLonChange(e)}
@@ -130,6 +139,7 @@ class App extends Component {
           : this.state.dailyWeather.data.map((day, index) => (
               <DailyWeather key={index} {...day} />
             ))}
+            {JSON.stringify(this.state.DailyWeather)}
       </div>
     );
   }
