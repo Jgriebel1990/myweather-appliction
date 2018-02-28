@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 serverApp.get("/weather_forecast/:lat,:lon", function(request, response) {
   const { lat, lon } = request.params;
-  const url = `https://api.darksky.net/forecast/${DAKRSKY_API}/${lat},${lon}`;
+  const url = `https://api.darksky.net/forecast/${DARKSKY_API}/${lat},${lon}`;
   axios
     .get(url)
     .then(res => {
@@ -32,7 +32,7 @@ serverApp.get("/location/:city,:state", function(request, response) {
       response.status(200).json(res.data);
     })
     .catch(err => {
-      console.log("poop", err);
+      console.log("FOIL", err);
       response.status(500).json({
         msg: "fail"
       });

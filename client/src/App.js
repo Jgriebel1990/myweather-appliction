@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import { getWeather } from "./service/weather";
-import { isEmptyObject } from './utilities';
-import DailyWeather from './DailyWeather'
+import { getLocation } from "./service/weather";
+import { isEmptyObject } from "./utilities";
+import DailyWeather from "./DailyWeather";
 
 class App extends Component {
   constructor() {
@@ -12,12 +13,13 @@ class App extends Component {
       lon: 0,
       dailyWeather: {},
       city: '',
-      states: '',
-      error: null
+      error: null,
+      state: 'FL'
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -27,6 +29,11 @@ class App extends Component {
   handleLonChange(e) {
     this.setState({
       lon: +e.target.value
+    });
+  }
+  handleCityChange(e) {
+    this.setState({
+      city: e.target.value
     });
   }
   handleSubmit(e) {
@@ -45,22 +52,42 @@ class App extends Component {
           msg: "error"
         });
       });
-    getCity(this.state.city, this.state.states)
-    
   }
+  getCity(e) {
+    e.preventDefault();
+    console.log('agagyhasrg');
+    getLocation(this.state.city, this.state.state)
+      .then(response => {
+        const lat = response.data.results[0].geometry.location.lat;
+        const lon = response.data.results[0].geometry.location.lng;
+        this.setState({
+          lat: lat,
+          lon: lon
+        });
+        this.handleSubmit();
+      })
+      .catch(err => {
+        console.log('tyoererg');
+        this.setState({
+          msg:'errer'
+        });
+      });
+
+  }
+
   render() {
     return (
       <div>
-        <h1 className='h1-style'>Whats the Weather?</h1>
-        <header className='head-style'>
+        <h1 className="h1-style">Whats the Weather?</h1>
+        <header className="head-style">
           Enter the latitude and longitude to find the current weather!
         </header>
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <label className='lat'>
+        <form onSubmit={e => this.getCity(e)} >
+          <label className="lat">
             <h4>Latitude</h4>
             <input
-              className='col-lg-3 lat'
-              type="numbers"
+              className=""
+              type="number"
               placeholder="Latitude"
               min="-90"
               max="90"
@@ -69,11 +96,11 @@ class App extends Component {
               required
             />
           </label>
-          <label className='lat'>
+          <label className="lat">
             <h4>Longitude</h4>
             <input
-              className='col-lg-3'
-              type="numbers"
+              className=""
+              type="number"
               placeholder="Longitude"
               min="-180"
               max="180"
@@ -82,15 +109,27 @@ class App extends Component {
               required
             />
           </label>
+          <label className="lat">
+            <h4>Location</h4>
+            <input
+              type="text"
+              className=""
+              placeholder="Location"
+              onChange={e => this.handleCityChange(e)}
+              value={this.state.city}
+              
+            />
+          </label>
           <button type="submit" className="btn-primary btn-lg">
             Get Weather
           </button>
         </form>
-        {this.state.error ? <h1>{this.state.error}</h1> : ''}
-        { isEmptyObject(this.state.dailyWeather) ? 
-          "" :
-          this.state.dailyWeather.data.map((day, index) => <DailyWeather key={index}
-                                                                        {...day} />)}
+        {this.state.error ? <h1>{this.state.error}</h1> : ""}
+        {isEmptyObject(this.state.dailyWeather)
+          ? ""
+          : this.state.dailyWeather.data.map((day, index) => (
+              <DailyWeather key={index} {...day} />
+            ))}
       </div>
     );
   }
