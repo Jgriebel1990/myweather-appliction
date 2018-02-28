@@ -17,5 +17,9 @@
 }
 
 .form {
-    flex-wrap: wrap;
+    display: flex
+}
+
+.submit-btn {
+    background-color: steelblue;
 }

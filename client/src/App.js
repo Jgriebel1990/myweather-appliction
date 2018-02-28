@@ -38,7 +38,6 @@ class App extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("hello");
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
         const dailyWeather = response.data.daily;
@@ -55,21 +54,21 @@ class App extends Component {
   }
   getCity(e) {
     e.preventDefault();
-    console.log('agagyhasrg');
     getLocation(this.state.city, this.state.state)
       .then(response => {
         const lat = response.data.results[0].geometry.location.lat;
         const lon = response.data.results[0].geometry.location.lng;
         this.setState({
           lat: lat,
-          lon: lon
+          lon: lon,
         });
         this.handleSubmit();
+        
       })
       .catch(err => {
-        console.log('tyoererg');
+        console.log('FAIL');
         this.setState({
-          msg:'errer'
+          msg:'error'
         });
       });
 
@@ -82,7 +81,7 @@ class App extends Component {
         <header className="head-style">
           Enter the latitude and longitude to find the current weather!
         </header>
-        <form onSubmit={e => this.getCity(e)} >
+        <form onSubmit={e => this.getCity(e)} className='container'>
           <label className="lat">
             <h4>Latitude</h4>
             <input
@@ -117,10 +116,11 @@ class App extends Component {
               placeholder="Location"
               onChange={e => this.handleCityChange(e)}
               value={this.state.city}
+              required
               
             />
           </label>
-          <button type="submit" className="btn-primary btn-lg">
+          <button type="submit" className="btn-primary btn-lg submit-btn">
             Get Weather
           </button>
         </form>
