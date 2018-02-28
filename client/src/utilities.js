@@ -7,7 +7,5 @@ export const convertTimestamp = (seconds) => {
     const year = d.getFullYear();
     const month = d.getMonth();
     const day = d.getDate();
-    const hours = d.getHours();
-    const minutes = d.getMinutes();
-    return `${month + 1}/${day}/${year} ${hours}:${minutes}`;
+    return `${month + 1}/${day}/${year}`;
 }
