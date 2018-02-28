@@ -37,8 +37,6 @@ class App extends Component {
     });
   }
   handleSubmit(e) {
-    if( //need if statement for handle submit so i can get it to work after i find the city
-    )
     e.preventDefault();
     console.log("hello");
     getWeather(this.state.lat, this.state.lon)
