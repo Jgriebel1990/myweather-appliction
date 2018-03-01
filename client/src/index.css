@@ -1,7 +1,4 @@
-body, html {
-    height: 100%;
-    min-height: 100%;
-}
+
 
 .bg {
     background-image: url('./images/the_weather_bg.jpg');
@@ -20,8 +17,10 @@ body, html {
 
 .submit-btn {
     background-color: rgba(115, 152, 255, 0.856);
-    border-color: rgb(25, 63, 112);
+    border:solid 3px rgb(25, 63, 112);
     color: rgb(232, 235, 195);
+    margin-left: 5.3rem;
+    margin-bottom: 25px;
 }
 
 .weather-box {
@@ -40,11 +39,6 @@ body, html {
 
 .loc-mrg {
     margin-left: 4.5rem;
-}
-
-.btn-mrg{
-    margin-left: 5.5rem;
-    margin-bottom: 25px;
 }
 
 .bg-clr-li {
