@@ -9,8 +9,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lat: 0,
-      lon: 0,
+      lat: '',
+      lon: '',
       dailyWeather: {},
       city: '',
       error: null,
@@ -88,9 +88,8 @@ class App extends Component {
         <header className="head-style">
           Enter the latitude and longitude to find the current weather!
         </header>
-        <form onSubmit={e => this.getCity(e)} className='container'>
+        <form onSubmit={e => this.getCity(e)} className='container form'>
           <label className="lat">
-            <h4>Latitude</h4>
             <input
               className=""
               type="number"
@@ -100,11 +99,10 @@ class App extends Component {
               max="90"
               onChange={e => this.handleLatChange(e)}
               value={this.state.lat}
-              required
+              disabled
             />
           </label>
           <label className="lat">
-            <h4>Longitude</h4>
             <input
               className=""
               type="number"
@@ -114,11 +112,10 @@ class App extends Component {
               max="180"
               onChange={e => this.handleLonChange(e)}
               value={this.state.lon}
-              required
+              disabled
             />
           </label>
           <label className="lat">
-            <h4>Location</h4>
             <input
               type="text"
               className=""
