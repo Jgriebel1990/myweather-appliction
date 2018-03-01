@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express");
 const axios = require("axios");
 
@@ -7,6 +8,8 @@ const { MAPS_API} = process.env;
 
 const serverApp = express();
 const port = process.env.PORT || 5000;
+
+serverApp.use(express.static("client/build"));
 
 serverApp.get("/weather_forecast/:lat,:lon", function(request, response) {
   const { lat, lon } = request.params;
@@ -37,6 +40,9 @@ serverApp.get("/location/:city,:state", function(request, response) {
         msg: "fail"
       });
     });
+});
+serverApp.get('*', (request, response) => {
+  response.sendFile('index.html', {root: path.resolve('client/build')});
 });
 
 serverApp.listen(port, () => {
