@@ -85,30 +85,6 @@ class App extends Component {
       <div>
         <h1 className="h1-style">Global Weather</h1>
         <form onSubmit={e => this.getCity(e)} className="form-mrg">
-          <label>
-            <input
-              type="number"
-              placeholder="Latitude"
-              step="0.000000000001"
-              min="-90"
-              max="90"
-              onChange={e => this.handleLatChange(e)}
-              value={this.state.lat}
-              disabled
-            />
-          </label>
-          <label>
-            <input
-              type="number"
-              placeholder="Longitude"
-              step="0.000000000001"
-              min="-180"
-              max="180"
-              onChange={e => this.handleLonChange(e)}
-              value={this.state.lon}
-              disabled
-            />
-          </label>
           <div>
             <label>
               <input
@@ -124,8 +100,8 @@ class App extends Component {
           <div>
             <button
               type="submit"
-              className="btn-lg btn-primary submit-btn btn-mrg submit-btn:hover">
-            
+              className="btn-lg btn-primary submit-btn btn-mrg submit-btn:hover"
+            >
               Get Weather
             </button>
           </div>
