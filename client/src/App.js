@@ -83,9 +83,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <h1 className="h1-style">Weather</h1>
-        <form onSubmit={e => this.getCity(e)} className=''>
+      <div className='bg'>
+        <h1 className="h1-style">Global Weather</h1>
+        <form onSubmit={e => this.getCity(e)} className='form-mrg'>
           <label className="">
             <input
               className=""
@@ -112,20 +112,24 @@ class App extends Component {
               disabled
             />
           </label>
-          <label className="lat">
-            <input
-              type="text"
-              className=""
-              placeholder="Enter location"
-              onChange={e => this.handleCityChange(e)}
-              value={this.state.city}
-              required
-              
-            />
-          </label>
-          <button type="submit" className="btn-primary btn-lg submit-btn">
-            Get Weather
-          </button>
+          <div>
+            <label className="lat">
+              <input
+                type="text"
+                className="loc-mrg"
+                placeholder="Enter location"
+                onChange={e => this.handleCityChange(e)}
+                value={this.state.city}
+                required
+                
+              />
+            </label>
+          </div>
+          <div>
+            <button type="submit" className="btn-outline-secondary btn-lg submit-btn btn-mrg">
+              Get Weather
+            </button>
+          </div>
         </form>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.dailyWeather)
@@ -135,6 +139,7 @@ class App extends Component {
             ))}
             {JSON.stringify(this.state.DailyWeather)}
       </div>
+      
     );
   }
 }

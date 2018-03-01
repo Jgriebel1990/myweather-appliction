@@ -5,6 +5,7 @@
     font-size: 100px;
 
 }
+
 .head-style {
     text-align: center;
     color: steelblue;
@@ -13,13 +14,42 @@
 }
 
 .submit-btn {
-    background-color: steelblue;
+    background-color: rgb(232, 235, 195);
+    border-color: midnightblue;
+    color: black;
 }
 
 .weather-box {
     border: solid 3px black;
-    width: 13rem;
-    height: 13rem;
-    margin: 10px;
-    margin-top: 150px;
+    width: 8rem;
+    height: 14rem;
+    margin-left: 1.7rem;
+    text-justify: auto;
+    padding: 3px;
 }
+
+.form-mrg{
+    margin-left: 30rem;
+}
+
+.loc-mrg {
+    margin-left: 4.5rem;
+}
+
+.btn-mrg{
+    margin-left: 5.5rem;
+    margin-bottom: 25px;
+}
+
+.bg-clr-li {
+    background-color: rgba(115, 152, 255, 0.719);
+}
+
+.list-style {
+    list-style: none;
+};
+
+.bg {
+    background-image: url('./images/earth_background.jpg')
+}
+

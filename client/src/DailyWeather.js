@@ -4,12 +4,12 @@ import { convertTimestamp } from './utilities';
 import images from './images';
 const DailyWeather = props => {
     return(
-        <div className=''>
-            <ul className='weather-box list-style'>
+        <div className='d-inline-block align-items-start'>
+            <ul className='weather-box list-style bg-clr-li'>
                 <li>{convertTimestamp(props.time)}</li>
                 <li><img src={images(props.icon)} alt={props.icon}/></li>
-                <li> {props.temperatureHigh}</li>
-                <li>{props.temperatureLow}</li>
+                <li>Hi: {props.temperatureHigh}&deg;F</li>
+                <li>Lo: {props.temperatureLow}&deg;F</li>
                 <li>Humidity: {props.humidity}</li>
                 <li>uvIndex: {props.uvIndex}</li>
             </ul>
