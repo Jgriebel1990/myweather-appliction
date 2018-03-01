@@ -83,13 +83,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="h1-style">Whats the Weather?</h1>
-        <header className="head-style">
-          Enter the latitude and longitude to find the current weather!
-        </header>
-        <form onSubmit={e => this.getCity(e)} className='container form'>
-          <label className="lat">
+      <div className='container'>
+        <h1 className="h1-style">Weather</h1>
+        <form onSubmit={e => this.getCity(e)} className=''>
+          <label className="">
             <input
               className=""
               type="number"
@@ -102,7 +99,7 @@ class App extends Component {
               disabled
             />
           </label>
-          <label className="lat">
+          <label className="">
             <input
               className=""
               type="number"
@@ -119,7 +116,7 @@ class App extends Component {
             <input
               type="text"
               className=""
-              placeholder="Location"
+              placeholder="Enter location"
               onChange={e => this.handleCityChange(e)}
               value={this.state.city}
               required

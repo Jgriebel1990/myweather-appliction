@@ -12,22 +12,14 @@
     font-size: 30px;
 }
 
-.lat {
-    text-align: center;
-}
-
-.form {
-    margin: 18rem;
-    margin-top: 10px;
-}
-
 .submit-btn {
     background-color: steelblue;
 }
 
-.border {
+.weather-box {
     border: solid 3px black;
-    display: inline-block;
-    margin: 3rem;
-    
+    width: 13rem;
+    height: 13rem;
+    margin: 10px;
+    margin-top: 150px;
 }
