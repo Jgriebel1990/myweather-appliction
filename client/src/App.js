@@ -95,7 +95,7 @@ class App extends Component {
               className=""
               type="number"
               placeholder="Latitude"
-              step='0.000000001'
+              step='0.000000000001'
               min="-90"
               max="90"
               onChange={e => this.handleLatChange(e)}
@@ -109,7 +109,7 @@ class App extends Component {
               className=""
               type="number"
               placeholder="Longitude"
-              step='0.000000001'
+              step='0.000000000001'
               min="-180"
               max="180"
               onChange={e => this.handleLonChange(e)}

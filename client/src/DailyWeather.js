@@ -5,7 +5,7 @@ import images from './images';
 const DailyWeather = props => {
     return(
         <div>
-            <ul className='weather-box list-style'>
+            <ul className='border list-style'>
                 <li>Date: {convertTimestamp(props.time)}</li>
                 <li>Summary: {props.summary}</li>
                 <li>Icon: <svg src={images(props.icon)} alt={props.icon}/></li>
