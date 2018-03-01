@@ -9,18 +9,18 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lat: '',
-      lon: '',
+      lat: "",
+      lon: "",
       dailyWeather: {},
-      city: '',
+      city: "",
       error: null,
-      state: ''
+      state: ""
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
-    this.handleStateChange =this.handleStateChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -43,10 +43,10 @@ class App extends Component {
     });
   }
   handleSubmit(e) {
-    if(e){
+    if (e) {
       e.preventDefault();
     }
-    
+
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
         const dailyWeather = response.data.daily;
@@ -69,29 +69,27 @@ class App extends Component {
         const lon = response.data.results[0].geometry.location.lng;
         this.setState({
           lat: lat,
-          lon: lon,
+          lon: lon
         });
         this.handleSubmit();
       })
       .catch(err => {
         this.setState({
-          msg:'error'
+          msg: "error"
         });
       });
-
   }
 
   render() {
     return (
-      <div className='bg'>
+      <div className="bg">
         <h1 className="h1-style">Global Weather</h1>
-        <form onSubmit={e => this.getCity(e)} className='form-mrg'>
-          <label className="">
+        <form onSubmit={e => this.getCity(e)} className="form-mrg">
+          <label>
             <input
-              className=""
               type="number"
               placeholder="Latitude"
-              step='0.000000000001'
+              step="0.000000000001"
               min="-90"
               max="90"
               onChange={e => this.handleLatChange(e)}
@@ -99,12 +97,11 @@ class App extends Component {
               disabled
             />
           </label>
-          <label className="">
+          <label>
             <input
-              className=""
               type="number"
               placeholder="Longitude"
-              step='0.000000000001'
+              step="0.000000000001"
               min="-180"
               max="180"
               onChange={e => this.handleLonChange(e)}
@@ -113,7 +110,7 @@ class App extends Component {
             />
           </label>
           <div>
-            <label className="lat">
+            <label>
               <input
                 type="text"
                 className="loc-mrg"
@@ -121,12 +118,14 @@ class App extends Component {
                 onChange={e => this.handleCityChange(e)}
                 value={this.state.city}
                 required
-                
               />
             </label>
           </div>
           <div>
-            <button type="submit" className="btn-outline-secondary btn-lg submit-btn btn-mrg">
+            <button
+              type="submit"
+              className="btn-outline-secondary btn-lg submit-btn btn-mrg">
+            
               Get Weather
             </button>
           </div>
@@ -137,9 +136,8 @@ class App extends Component {
           : this.state.dailyWeather.data.map((day, index) => (
               <DailyWeather key={index} {...day} />
             ))}
-            {JSON.stringify(this.state.DailyWeather)}
+        {JSON.stringify(this.state.DailyWeather)}
       </div>
-      
     );
   }
 }

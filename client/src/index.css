@@ -1,26 +1,20 @@
 .h1-style {
     text-align: center;
-    color: steelblue;
+    color: ivory;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100px;
 
 }
 
-.head-style {
-    text-align: center;
-    color: steelblue;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
-}
-
 .submit-btn {
     background-color: rgb(232, 235, 195);
-    border-color: midnightblue;
+    border-color: black;
     color: black;
 }
 
 .weather-box {
     border: solid 3px black;
+    color: rgb(232, 235, 195);
     width: 8rem;
     height: 14rem;
     margin-left: 1.7rem;
@@ -49,7 +43,4 @@
     list-style: none;
 };
 
-.bg {
-    background-image: url('./images/earth_background.jpg')
-}
 
