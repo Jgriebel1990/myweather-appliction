@@ -124,7 +124,7 @@ class App extends Component {
           <div>
             <button
               type="submit"
-              className="btn-outline-secondary btn-lg submit-btn btn-mrg">
+              className="btn-lg btn-primary submit-btn btn-mrg submit-btn:hover">
             
               Get Weather
             </button>

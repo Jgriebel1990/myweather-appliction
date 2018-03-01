@@ -7,13 +7,13 @@
 }
 
 .submit-btn {
-    background-color: rgb(232, 235, 195);
-    border-color: black;
-    color: black;
+    background-color: rgba(115, 152, 255, 0.856);
+    border-color: rgb(25, 63, 112);
+    color: rgb(232, 235, 195);
 }
 
 .weather-box {
-    border: solid 3px black;
+    border: solid 3px rgb(25, 63, 112);
     color: rgb(232, 235, 195);
     width: 8rem;
     height: 14rem;
@@ -36,7 +36,7 @@
 }
 
 .bg-clr-li {
-    background-color: rgba(115, 152, 255, 0.719);
+    background-color: rgba(115, 152, 255, 0.856);
 }
 
 .list-style {
