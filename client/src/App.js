@@ -82,7 +82,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="bg">
+      <div>
         <h1 className="h1-style">Global Weather</h1>
         <form onSubmit={e => this.getCity(e)} className="form-mrg">
           <label>

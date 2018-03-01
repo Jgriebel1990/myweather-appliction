@@ -1,3 +1,15 @@
+body, html {
+    height: 100%;
+    min-height: 100%;
+}
+
+.bg {
+    background-image: url('./images/the_weather_bg.jpg');
+    height: 100%;
+    min-height: 100%;
+    
+}
+
 .h1-style {
     text-align: center;
     color: ivory;
@@ -42,5 +54,7 @@
 .list-style {
     list-style: none;
 };
+
+
 
 
