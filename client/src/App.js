@@ -90,7 +90,7 @@ class App extends Component {
               <input
                 type="text"
                 className="loc-mrg"
-                placeholder="Enter location"
+                placeholder="City, State"
                 onChange={e => this.handleCityChange(e)}
                 value={this.state.city}
                 required

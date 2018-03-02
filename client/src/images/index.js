@@ -6,7 +6,7 @@ import night from './night.svg';
 import rainy3 from './rainy-7.svg';
 import snowy2 from './snowy-6.svg';
 import thunder from './thunder.svg';
-import wind from './weather_icons-26.svg'
+import wind from './wind_svg.svg';
 
 const Selection = (name) => {
     switch(name){
